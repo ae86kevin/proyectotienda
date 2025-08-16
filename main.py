@@ -1,2 +1,4 @@
-print()
-print()
+import claseProducto
+
+prod = claseProducto
+
