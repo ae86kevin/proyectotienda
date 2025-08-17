@@ -1,4 +1,4 @@
-# 🛒 Proyecto SmartStock
+# 🛒 Proyecto Tienda
 
 Este proyecto simula el funcionamiento básico de un sistema de inventario para una tienda, utilizando clases orientadas a objetos y algoritmos clásicos como Quick Sort y búsqueda secuencial.
 
