@@ -7,7 +7,7 @@ Este proyecto simula el funcionamiento básico de un sistema de inventario para 
 ## 👥 Integrantes
 
 - **Yefry** – Encargado de las clases `Buscador` y `Ordenador`
-- **Compañero** – Encargado de las clases `Producto` e `Inventario`
+- **Kevin** – Encargado de las clases `Producto` e `Inventario`
 
 ---
 
@@ -32,7 +32,7 @@ main.py               # Archivo principal que ejecuta el programa
 
 * Categoría (coincidencia parcial)
 
-* Retorna listas de objetos Producto para facilitar el ordenamiento
+**Retorna listas de objetos Producto para facilitar el ordenamiento**
 
 #### Clase Ordenador
 - Ordena listas de productos por:
@@ -43,9 +43,9 @@ main.py               # Archivo principal que ejecuta el programa
 
 * Stock
 
-* Utiliza el algoritmo Quick Sort
+**Utiliza el algoritmo Quick Sort**
 
-* Recibe listas derivadas del diccionario del inventario
+**Recibe listas derivadas del diccionario del inventario**
 
 ### 🔹 Kevin – Gestión de productos e inventario
 #### Clase Producto
