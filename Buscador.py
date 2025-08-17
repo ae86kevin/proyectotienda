@@ -5,11 +5,10 @@ class Buscador:
             return lista[codigo]
         return None
 
-    # Metodo busca si el nombre está en la lista(diccionario) y retorna un nuevo diccionario de los objetos que coinciden
+    # Metodo busca si un producto(objeto) en la lista(diccionario) tiene el nombre a buscar y retorna un nuevo diccionario de los objetos que coinciden
     def por_nombre(self, lista, nombre):
-        nueva_lista = {}
-        nombre = nombre.lower()
-        for clave, producto in lista.items():
-            if producto.nombre.lower() == nombre:
-                nueva_lista[clave] = producto
-        return nueva_lista
+        return [producto for producto in lista.values() if producto.nombre.lower() == nombre.lower()] # Lista por comprensión
+
+    # Metodo busca si un producto(objeto) en la lista(diccionario) tiene la categoría a buscar y retorna un nuevo diccionario de los objetos que coinciden
+    def por_categoria(self, lista, categoria):
+        return [producto for producto in lista.values() if producto.categoria.lower() == categoria.lower()] # Lista por comprensión
