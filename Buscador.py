@@ -28,13 +28,13 @@ class Buscador:
             print("(1)Alimentos frescos, (2)lacteos , (3)bebidas, (4)limpieza")
             num_categor = input("seleccine la tipo de categoria ")
             if num_categor in ["1", "2", "3", "4"]:
-                categoria = {
+                categorias = {
                     "1": "Alimentos frescos",
                     "2": "Lacteos",
                     "3": "Bebidas",
                     "4": "Limpieza"
                 }
-                categoria = categoria[num_categor]
+                categoria = categorias[num_categor]
                 break
             else:
                 print("Debe seleccionar una categoria")
@@ -50,5 +50,3 @@ class Buscador:
         print("...No se encontraron productos de esa categoria.\n")
         return None
 
-# Instanciar la clase Buscador
-buscador = Buscador()
