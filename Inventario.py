@@ -65,8 +65,18 @@ class Inventario:
                     except ValueError:
                         print("Solo se permite numero. Intente de nuevo")
 
+                while True:
+                    try:
+                        stock=int(input("Ingrese el stock del producto: "))
+                        if stock<0:
+                            print("el stcok no puede ser menor a 0. intente de nuevo")
+                            continue
+                        break
+                    except ValueError:
+                        print("Solo se permite numero. Intente de nuevo")
 
-                self.diccProductos[codigo]=claseProducto.Producto(codigo, nombre, categaria, precio)
+
+                self.diccProductos[codigo]=claseProducto.Producto(codigo, nombre, categaria, precio,stock)
                 print("\nProducto agregado con exito")
 
 
@@ -117,6 +127,33 @@ class Inventario:
                 case "0":
                     print("Saliendo")
 
+    def modificadoStock(self):
+        try:
+            codigo = int(input("ingrese el codigo del producto: "))
+        except ValueError:
+            print("Solo se permite numeros. intente de nuevo")
+            return
+        if codigo in self.diccProductos:
+            producto = self.diccProductos[codigo]
+            print(f"Stock actual de '{producto.nombre}' :{producto.stock}")
+            while True:
+                try:
+                    nuevoStock = int(input("Ingrese el stock del producto: "))
+                    if nuevoStock < 0:
+                        print("No puede ser menos a 0")
+                        break
+
+                    else:
+                        producto.stock = nuevoStock
+                        print("Stock modificado con exito")
+                        break
+                except ValueError:
+                    print("Solo se permite numeros. intente de nuevo")
+            else:
+                print("producto no registrado")
+
+
+
 
     def Mostarinvetario(self):
         if not self.diccProductos:
@@ -128,6 +165,7 @@ class Inventario:
             print(f"Nombre: {producto.nombre}")
             print(f"Categoris: {producto.categoria}")
             print(f"Precio: {producto.precio:.2f}")
+            print(f"stoc: {producto.stock}")
 
 
 
