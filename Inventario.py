@@ -137,31 +137,6 @@ class Inventario:
                 case "0":
                     print("Saliendo")
 
-    def modificadoStock(self):
-        try:
-            codigo = int(input("ingrese el codigo del producto: "))
-        except ValueError:
-            print("Solo se permite numeros. intente de nuevo")
-            return
-        if codigo in self.diccProductos:
-            producto = self.diccProductos[codigo]
-            print(f"Stock actual de '{producto.nombre}' :{producto.stock}")
-            while True:
-                try:
-                    nuevoStock = int(input("Ingrese el stock del producto: "))
-                    if nuevoStock < 0:
-                        print("No puede ser menos a 0")
-                        break
-
-                    else:
-                        producto.stock = nuevoStock
-                        print("Stock modificado con exito")
-                        break
-                except ValueError:
-                    print("Solo se permite numeros. intente de nuevo")
-            else:
-                print("producto no registrado")
-
 
 
 
