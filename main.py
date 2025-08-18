@@ -1,0 +1,4 @@
+import claseProducto
+
+prod = claseProducto
+
