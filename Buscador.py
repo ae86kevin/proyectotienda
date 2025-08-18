@@ -23,7 +23,22 @@ class Buscador:
         return None
 
     # Metodo busca si un producto(objeto) en la lista(diccionario) tiene la categoría a buscar y retorna un nuevo diccionario de los objetos que coinciden
-    def por_categoria(self, lista, categoria):
+    def por_categoria(self, lista):
+        while True:
+            print("(1)Alimentos frescos, (2)lacteos , (3)bebidas, (4)limpieza")
+            num_categor = input("seleccine la tipo de categoria ")
+            if num_categor in ["1", "2", "3", "4"]:
+                categoria = {
+                    "1": "Alimentos frescos",
+                    "2": "Lacteos",
+                    "3": "Bebidas",
+                    "4": "Limpieza"
+                }
+                categoria = categoria[num_categor]
+                break
+            else:
+                print("Debe seleccionar una categoria")
+
         nueva_lista = [producto for producto in lista.values() if producto.categoria.lower() == categoria.lower()]  # Lista por comprensión
         # Imprimir los productos encontrados
         if nueva_lista:

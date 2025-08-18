@@ -21,63 +21,63 @@ class Inventario:
             except ValueError:
                 print("Solo se permite numeros enteres. intente de nuevo")
 
-            for i in range(cantidad):
-                print(f"\n ingrese la informacion del producto {i+1}")
+        for i in range(cantidad):
+            print(f"\n ingrese la informacion del producto {i+1}")
 
-                while True:
-                    try:
-                        codigo=int(input("Ingrese el codigo del producto: "))
-                        if codigo in self.diccProductos:
-                            print("El codigo ya existe. intente de nuevo")
-                            return
-                        break
-                    except ValueError:
-                        print("Solo se permite numeros enteres. intente de nuevo")
+            while True:
+                try:
+                    codigo=int(input("Ingrese el codigo del producto: "))
+                    if codigo in self.diccProductos:
+                        print("El codigo ya existe. intente de nuevo")
+                        return
+                    break
+                except ValueError:
+                    print("Solo se permite numeros enteres. intente de nuevo")
 
-                while True:
-                    nombre=input("Ingrese el nombre del producto: ")
-                    if nombre =="":
-                        print("Deber ingresar un nombre.Intente de nuevo")
-                    else:
-                        break
-
-
-                while True:
-                    print("(1)Alimentos fresco, (2)lacteos , (3)bebidas, (4)liempieza")
-                    categaria=input("seleccine la tipo de categoria ")
-                    if categaria in ["1", "2", "3", "4"]:
-                        categaria={
-                            "1":"Alimentos fresco",
-                            "2":"Lacteos ",
-                            "3":"Bebidas ",
-                            "4":"Liempieza"
-
-                        }
-                        categaria=categaria[categaria]
-                        break
-                    else:
-                        print("Debe seleccionar una categoria")
-
-                while True:
-                    try:
-                        precio=float(input("Ingrese el precio del producto: "))
-                        break
-                    except ValueError:
-                        print("Solo se permite numero. Intente de nuevo")
-
-                while True:
-                    try:
-                        stock=int(input("Ingrese el stock del producto: "))
-                        if stock<0:
-                            print("el stcok no puede ser menor a 0. intente de nuevo")
-                            continue
-                        break
-                    except ValueError:
-                        print("Solo se permite numero. Intente de nuevo")
+            while True:
+                nombre=input("Ingrese el nombre del producto: ")
+                if nombre =="":
+                    print("Deber ingresar un nombre.Intente de nuevo")
+                else:
+                    break
 
 
-                self.diccProductos[codigo]=claseProducto.Producto(codigo, nombre, categaria, precio,stock)
-                print("\nProducto agregado con exito")
+            while True:
+                print("(1)Alimentos fresco, (2)lacteos , (3)bebidas, (4)liempieza")
+                categaria=input("seleccine la tipo de categoria ")
+                if categaria in ["1", "2", "3", "4"]:
+                    categaria={
+                        "1":"Alimentos frescos",
+                        "2":"Lacteos",
+                        "3":"Bebidas",
+                        "4":"Limpieza"
+
+                    }
+                    categaria=categaria[categaria]
+                    break
+                else:
+                    print("Debe seleccionar una categoria")
+
+            while True:
+                try:
+                    precio=float(input("Ingrese el precio del producto: "))
+                    break
+                except ValueError:
+                    print("Solo se permite numero. Intente de nuevo")
+
+            while True:
+                try:
+                    stock=int(input("Ingrese el stock del producto: "))
+                    if stock<0:
+                        print("el stcok no puede ser menor a 0. intente de nuevo")
+                        continue
+                    break
+                except ValueError:
+                    print("Solo se permite numero. Intente de nuevo")
+
+
+            self.diccProductos[codigo]=claseProducto.Producto(codigo, nombre, categaria, precio,stock)
+            print("\nProducto agregado con exito")
 
 
     def eliminarProducto(self):
