@@ -90,7 +90,7 @@ class Inventario:
                 print("\nProducto eliminado con exito")
             else:
                 print("\nNo se elimino nada")
-                return
+
         else:
             print("\nProducto no registrado")
 
@@ -100,32 +100,53 @@ class Inventario:
             producto=self.diccProductos[codigo]
             producto(f"\n{producto.nombre}")
 
-            seleccion =""
-            while seleccion != "0":
+
+            while True:
                 print("\nQue datos desea Modificar? ")
                 print("1. Nombre")
                 print("2. Precio")
+                print("3. Stock")
                 print("0. salir")
                 seleccion =int(input())
 
-            match seleccion:
-                case "1":
-                    nuevoNombre=input("Ingrese el nuevo nombre: ")
-                    producto.nombre(nuevoNombre)
-                    print("\nProducto modificado con exito")
+                match seleccion:
+                    case "1":
+                        nuevoNombre = input("Ingrese el nuevo nombre: ")
+                        producto.nombre=nuevoNombre
+                        print("\nProducto modificado con exito")
 
-                case "2":
-                    while True:
-                        try:
-                            nuevoPrecio=float(input("Ingrese el precio del producto: "))
-                            producto.precio=nuevoPrecio
-                            print("\nProducto modificado con exito")
-                            break
-                        except ValueError:
-                            print("Solo se permite numeros. intente de nuevo")
+                    case "2":
+                        while True:
+                            try:
+                                nuevoPrecio = float(input("Ingrese el precio del producto: "))
+                                producto.precio = nuevoPrecio
+                                print("\nProducto modificado con exito")
+                                break
+                            except ValueError:
+                                print("Solo se permite numeros. intente de nuevo")
+                    case "3":
+                        while True:
+                            try:
+                                nuevoStock = float(input("Ingrese el stock del producto: "))
+                                if nuevoStock<0:
+                                    print("la cantidad no puedes ser menor a 0. intente de nuevo")
+                                    continue
+                                    producto.stockd=nuevoStock
+                                    print("Modicado con exito")
+                                    break
+                            except ValueError:
+                                print("deber ser numeros. intente de nuevo")
 
-                case "0":
-                    print("Saliendo")
+                    case "0":
+                        print("saliendo del del menu")
+                        break
+        else:
+            print("\nProducto no encotrado")
+
+
+
+
+
 
     def modificadoStock(self):
         try:
