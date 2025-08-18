@@ -1,3 +1,9 @@
+from logging import exception
+from math import trunc
+from queue import PriorityQueue
+from symtable import Class
+from xml.dom.minidom import ProcessingInstruction
+
 import  claseProducto
 
 class Inventario:
@@ -15,67 +21,70 @@ class Inventario:
             except ValueError:
                 print("Solo se permite numeros enteres. intente de nuevo")
 
-        for i in range(cantidad):
-            print(f"\n ingrese la informacion del producto {i + 1}")
+            for i in range(cantidad):
+                print(f"\n ingrese la informacion del producto {i+1}")
 
-            while True:
-                try:
-                    codigo = input("Ingrese el codigo del producto: ")
-                    if codigo in self.diccProductos:
-                        print("El codigo ya existe. intente de nuevo")
-                        return
-                    break
-                except ValueError:
-                    print("Solo se permite numeros enteres. intente de nuevo")
+                while True:
+                    try:
+                        codigo=int(input("Ingrese el codigo del producto: "))
+                        if codigo in self.diccProductos:
+                            print("El codigo ya existe. intente de nuevo")
+                            return
+                        break
+                    except ValueError:
+                        print("Solo se permite numeros enteres. intente de nuevo")
 
-            while True:
-                nombre = input("Ingrese el nombre del producto: ")
-                if nombre == "":
-                    print("Deber ingresar un nombre.Intente de nuevo")
-                else:
-                    break
+                while True:
+                    nombre=input("Ingrese el nombre del producto: ")
+                    if nombre =="":
+                        print("Deber ingresar un nombre.Intente de nuevo")
+                    else:
+                        break
 
-            while True:
-                print("(1)Alimentos fresco, (2)lacteos , (3)bebidas, (4)liempieza")
-                ncategaria = input("seleccine la tipo de categoria ")
-                if ncategaria in ["1", "2", "3", "4"]:
-                    categaria = {
-                        "1": "Alimentos frescos",
-                        "2": "Lacteos",
-                        "3": "Bebidas",
-                        "4": "Limpieza"
 
-                    }
-                    categoria = categaria[ncategaria]
-                    break
-                else:
-                    print("Debe seleccionar una categoria")
+                while True:
+                    print("(1)Alimentos fresco, (2)lacteos , (3)bebidas, (4)liempieza")
+                    categaria=input("seleccine la tipo de categoria ")
+                    if categaria in ["1", "2", "3", "4"]:
+                        categaria={
+                            "1":"Alimentos fresco",
+                            "2":"Lacteos ",
+                            "3":"Bebidas ",
+                            "4":"Liempieza"
 
-            while True:
-                try:
-                    precio = float(input("Ingrese el precio del producto: "))
-                    break
-                except ValueError:
-                    print("Solo se permite numero. Intente de nuevo")
+                        }
+                        categaria=categaria[categaria]
+                        break
+                    else:
+                        print("Debe seleccionar una categoria")
 
-            while True:
-                try:
-                    stock = int(input("Ingrese el stock del producto: "))
-                    if stock < 0:
-                        print("el stcok no puede ser menor a 0. intente de nuevo")
-                        continue
-                    break
-                except ValueError:
-                    print("Solo se permite numero. Intente de nuevo")
+                while True:
+                    try:
+                        precio=float(input("Ingrese el precio del producto: "))
+                        break
+                    except ValueError:
+                        print("Solo se permite numero. Intente de nuevo")
 
-            self.diccProductos[codigo] = claseProducto.Producto(codigo, nombre, categoria, precio, stock)
-            print("\nProducto agregado con exito")
+                while True:
+                    try:
+                        stock=int(input("Ingrese el stock del producto: "))
+                        if stock<0:
+                            print("el stcok no puede ser menor a 0. intente de nuevo")
+                            continue
+                        break
+                    except ValueError:
+                        print("Solo se permite numero. Intente de nuevo")
+
+
+                self.diccProductos[codigo]=claseProducto.Producto(codigo, nombre, categaria, precio,stock)
+                print("\nProducto agregado con exito")
+
 
     def eliminarProducto(self):
         codigo = input("Ingrese el código del producto a eliminar: ")
         if codigo in self.diccProductos:
-            producto = self.diccProductos[codigo]
-            confirmar = input(f"\nEsta seguro que desea eliminar este producto {producto.codigo}? (s/n): ")
+            producto=self.diccProductos[codigo]
+            confirmar=input(f"\nEsta seguro que desea eliminar este producto {producto.codigo}? (s/n): ")
             if confirmar.lower() == "s":
                 del self.diccProductos[codigo]
                 print("\nProducto eliminado con exito")
@@ -118,7 +127,7 @@ class Inventario:
                 case "0":
                     print("Saliendo")
 
-    def modificarStock(self):
+    def modificadoStock(self):
         try:
             codigo = int(input("ingrese el codigo del producto: "))
         except ValueError:
@@ -140,16 +149,29 @@ class Inventario:
                         break
                 except ValueError:
                     print("Solo se permite numeros. intente de nuevo")
-        else:
-            print("producto no registrado")
+            else:
+                print("producto no registrado")
 
-    def mostrarInventario(self):
+
+
+
+    def Mostarinvetario(self):
         if not self.diccProductos:
             print("\nEl invetario esta vacio")
             return
         print("\n INVERTARIOS DE LA TIENDA")
         for codigo,producto in self.diccProductos.items():
-            print(producto.mostrarProducto())
+            print(f"\nCodigo: {producto.codigo}")
+            print(f"Nombre: {producto.nombre}")
+            print(f"Categoris: {producto.categoria}")
+            print(f"Precio: {producto.precio:.2f}")
+            print(f"stoc: {producto.stock}")
+
+
+
+
+
+
 
 
 
