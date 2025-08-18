@@ -125,7 +125,9 @@ class Inventario:
         print("\n INVERTARIOS DE LA TIENDA")
         for codigo,producto in self.diccProductos.items():
             print(f"\nCodigo: {producto.codigo}")
-            print()
+            print(f"Nombre: {producto.nombre}")
+            print(f"Categoris: {producto.categoria}")
+            print(f"Precio: {producto.precio:.2f}")
 
 
 
