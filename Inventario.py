@@ -105,7 +105,7 @@ class Inventario:
                 print("\nQue datos desea Modificar? ")
                 print("1. Nombre")
                 print("2. Precio")
-                print("0. salir")
+                print("0. salir.")
                 seleccion =int(input())
 
             match seleccion:
