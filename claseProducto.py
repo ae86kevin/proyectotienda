@@ -6,6 +6,6 @@ class Producto:
         self.precio = precio
         self.stock = stock
 
-    def mostrarProducto(self):
-        return self.codigo,self.nombre,self.categoria,self.precio,self.stock
 
+    def mostrarProducto(self):
+        return self.codigo,self.nombre,self.categoria,self.precio, self.stock

@@ -1,4 +1,1 @@
 import claseProducto
-
-prod = claseProducto
-
