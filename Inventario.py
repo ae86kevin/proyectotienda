@@ -105,6 +105,7 @@ class Inventario:
                 print("\nQue datos desea Modificar? ")
                 print("1. Nombre")
                 print("2. Precio")
+                print("3. stock")
                 print("0. salir.")
                 seleccion =int(input())
 
@@ -123,6 +124,15 @@ class Inventario:
                             break
                         except ValueError:
                             print("Solo se permite numeros. intente de nuevo")
+                case "3":
+                    while True:
+                        try:
+                            nuevoStock=int(input("Ingrese el stock del producto: "))
+                            producto.stock=nuevoStock
+                            print("\nProducto modificado con exito")
+                            break
+                        except ValueError:
+                            print("solo ser permite numeros enteres. intente de nuevo")
 
                 case "0":
                     print("Saliendo")
