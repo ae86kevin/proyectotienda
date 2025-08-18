@@ -32,5 +32,3 @@ class Ordenador:
 
         return self.por_nombre(menores) + iguales + self.por_nombre(mayores)
 
-# Instanciar la clase Ordenador
-ordenador = Ordenador()

@@ -35,5 +35,3 @@ class Buscador:
         print("...No se encontraron productos de esa categoria.\n")
         return None
 
-# Instanciar la clase Buscador
-buscador = Buscador()
