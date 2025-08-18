@@ -2,6 +2,7 @@ from logging import exception
 from math import trunc
 from queue import PriorityQueue
 from symtable import Class
+from traceback import print_tb
 from xml.dom.minidom import ProcessingInstruction
 
 import  claseProducto
@@ -9,6 +10,7 @@ import  claseProducto
 class Inventario:
     def __init__(self):
         self.diccProductos = {}
+
 
     def agregarProducto(self):
         while True:
@@ -94,6 +96,8 @@ class Inventario:
         else:
             print("\nProducto no registrado")
 
+
+
     def modificarProducto(self):
         codigo=input("Ingrese el codigo del producto. ")
         if codigo in self.diccProductos:
@@ -107,7 +111,8 @@ class Inventario:
                 print("2. Precio")
                 print("3. Stock")
                 print("0. salir")
-                seleccion =int(input())
+                seleccion =input("seleccione una opcion: ")
+
 
                 match seleccion:
                     case "1":
@@ -125,17 +130,13 @@ class Inventario:
                             except ValueError:
                                 print("Solo se permite numeros. intente de nuevo")
                     case "3":
-                        while True:
-                            try:
-                                nuevoStock = float(input("Ingrese el stock del producto: "))
-                                if nuevoStock<0:
-                                    print("la cantidad no puedes ser menor a 0. intente de nuevo")
-                                    continue
-                                    producto.stockd=nuevoStock
-                                    print("Modicado con exito")
-                                    break
-                            except ValueError:
-                                print("deber ser numeros. intente de nuevo")
+                        try:
+                            nuevoStock = float(input("Ingrese el stock del producto: "))
+                            producto.stockd = nuevoStock
+                            print("\nProducto modificado con exito")
+                        except ValueError:
+                            print("Cantidad invalida")
+
 
                     case "0":
                         print("saliendo del del menu")
@@ -144,34 +145,22 @@ class Inventario:
             print("\nProducto no encotrado")
 
 
-
-
-
-
     def modificadoStock(self):
-        try:
-            codigo = int(input("ingrese el codigo del producto: "))
-        except ValueError:
-            print("Solo se permite numeros. intente de nuevo")
-            return
+        codigo = int(input("ingrese el codigo del producto: "))
         if codigo in self.diccProductos:
-            producto = self.diccProductos[codigo]
-            print(f"Stock actual de '{producto.nombre}' :{producto.stock}")
-            while True:
-                try:
-                    nuevoStock = int(input("Ingrese el stock del producto: "))
-                    if nuevoStock < 0:
-                        print("No puede ser menos a 0")
-                        break
-
-                    else:
-                        producto.stock = nuevoStock
-                        print("Stock modificado con exito")
-                        break
-                except ValueError:
-                    print("Solo se permite numeros. intente de nuevo")
-            else:
-                print("producto no registrado")
+            producto=self.diccProductos[codigo]
+            print(f"stock actual de '{producto.nombre}' : {producto.stockd}")
+            try:
+                nuevoStock = float(input("Ingrese el stock del producto: "))
+                if nuevoStock < 0:
+                    print("la cantidad no debe ser menor a 0. intente de nuevo")
+                else:
+                    producto.stockd = nuevoStock
+                    print("\nProducto modificado con exito")
+            except ValueError:
+                print("Debe ser numero entero.intente de nuevo")
+        else:
+            print("Producto no registrado")
 
 
 
