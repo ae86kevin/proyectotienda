@@ -46,14 +46,14 @@ class Inventario:
                     print("(1)Alimentos fresco, (2)lacteos , (3)bebidas, (4)liempieza")
                     categaria=input("seleccine la tipo de categoria ")
                     if categaria in ["1", "2", "3", "4"]:
-                        categaria={
+                        categarias={
                             "1":"Alimentos fresco",
                             "2":"Lacteos ",
                             "3":"Bebidas ",
                             "4":"Liempieza"
 
                         }
-                        categaria=categaria[categaria]
+                        categaria=categarias[categaria]
                         break
                     else:
                         print("Debe seleccionar una categoria")
