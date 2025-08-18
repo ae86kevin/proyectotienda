@@ -2,9 +2,8 @@ class Buscador:
     # Metodo busca si el codigo(clave) está en la lista(diccionario) y retorna el valor(Objeto)
     def por_codigo(self, lista, codigo):
         if codigo in lista:
-            print("...Producto encontrado:\n")
-            codigo, nombre, categoria, precio, stock = lista[codigo].mostrarProducto()
-            print(f"Codigo: {codigo}, Nombre: {nombre}, Categoria: {categoria}, Precio: {precio}, Stock: {stock}\n")
+            print("...Producto encontrado:")
+            print(lista[codigo].mostrarProducto())
             return lista[codigo]
         print("...No se encontró un producto con ese código.\n")
         return None
@@ -14,10 +13,9 @@ class Buscador:
         nueva_lista = [producto for producto in lista.values() if producto.nombre.lower() == nombre.lower()] # Lista por comprensión
         # Imprimir los productos encontrados
         if nueva_lista:
-            print(f"## Productos encontrados con el nombre '{nombre}':\n")
+            print(f"## Productos encontrados con el nombre '{nombre}':")
             for producto in nueva_lista:
-                codigo, nombre, categoria, precio, stock = producto.mostrarProducto()
-                print(f"Codigo: {codigo}, Nombre: {nombre}, Categoria: {categoria}, Precio: {precio}, Stock: {stock}")
+                print(producto.mostrarProducto())
             return nueva_lista
         print("...No se encontraron productos con ese nombre.\n")
         return None
@@ -42,10 +40,9 @@ class Buscador:
         nueva_lista = [producto for producto in lista.values() if producto.categoria.lower() == categoria.lower()]  # Lista por comprensión
         # Imprimir los productos encontrados
         if nueva_lista:
-            print(f"## Productos encontrados en la categoria '{categoria}':\n")
+            print(f"## Productos encontrados en la categoria '{categoria}':")
             for producto in nueva_lista:
-                codigo, nombre, categoria, precio, stock = producto.mostrarProducto()
-                print(f"Codigo: {codigo}, Nombre: {nombre}, Categoria: {categoria}, Precio: {precio}, Stock: {stock}")
+                print(producto.mostrarProducto())
             return nueva_lista
         print("...No se encontraron productos de esa categoria.\n")
         return None

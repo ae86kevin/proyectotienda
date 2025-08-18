@@ -7,5 +7,5 @@ class Producto:
         self.stock = stock
 
     def mostrarProducto(self):
-        return f"Codigo: {self.codigo} Nombre: {self.nombre} Categoria: {self.categoria} Precio: {self.precio} Stock: {self.stock}"
+        return f"Codigo: {self.codigo} - Nombre: {self.nombre} - Categoria: {self.categoria} - Precio: {self.precio} - Stock: {self.stock}"
 
