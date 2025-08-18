@@ -10,16 +10,17 @@ def menu_principal():
     print("\n## MENU PRINCIPAL ##")
     print("1. Agregar productos")
     print("2. Mostrar productos")
-    print("3. Buscar producto")
-    print("4. Modificar producto")
-    print("5. Eliminar producto")
+    print("3. Ordenar productos")
+    print("4. Buscar producto")
+    print("5. Modificar producto")
+    print("6. Eliminar producto")
     print("0. Salir")
 
     return input("Seleccione una opcion: ")
 
-def menu_buscador():
-    print("\n## BUSCADOR DE PRODUCTOS ##")
+def menu_buscar():
     while True:
+        print("\n## BUSCADOR DE PRODUCTOS ##")
         print("1. Buscar por codigo")
         print("2. Buscar por nombre")
         print("3. Buscar por categoria")
@@ -28,40 +29,19 @@ def menu_buscador():
 
         if op == "1":
             producto_buscado = buscador.por_codigo(inventario.diccProductos, input("Ingrese el codigo del producto a buscar: "))
-            menu_acciones()
         elif op == "2":
             productos_buscados = buscador.por_nombre(inventario.diccProductos, input("Ingrese el nombre a buscar: "))
-            menu_acciones()
         elif op == "3":
-            buscador.por_categoria(inventario.diccProductos)
-            menu_acciones()
+            productos_buscados = buscador.por_categoria(inventario.diccProductos)
         elif op == "0":
             print("Volviendo al menu principal...")
             break
         else:
             print("Opcion no valida. Intente de nuevo.")
 
-def menu_acciones():
-    print("\n## ACCIONES ##")
-    while True:
-        print("1. Modificar producto")
-        print("2. Eliminar producto")
-        print("3. Agregar producto")
-        print("0. Volver al menu anterior")
-        accion = input("Seleccione una accion: ")
-        if accion == "1":
-            inventario.modificarProducto()
-        elif accion == "2":
-            inventario.eliminarProducto()
-        elif accion == "3":
-            inventario.agregarProducto()
-        elif accion == "4":
-            print("Volviendo al buscador...")
-            return
-
 def menu_ordenar():
-    print("\n## ORDENAR PRODUCTOS ##")
     while True:
+        print("\n## ORDENAR PRODUCTOS ##")
         print("1. Ordenar por nombre")
         print("2. Ordenar por precio")
         print("3. Ordenar por stock")
@@ -69,14 +49,17 @@ def menu_ordenar():
         opcion = input("Seleccione una opcion: ")
 
         if opcion == "1":
-            ordenador.por_nombre(inventario.diccProductos)
-            menu_acciones()
+            productos_ordenados = ordenador.por_nombre(list(inventario.diccProductos.values()))
+            for producto in productos_ordenados:
+                print(producto.mostrarProducto())
         elif opcion == "2":
-            ordenador.por_precio(inventario.diccProductos)
-            menu_acciones()
+            productos_ordenados =ordenador.por_precio(list(inventario.diccProductos.values()))
+            for producto in productos_ordenados:
+                print(producto.mostrarProducto())
         elif opcion == "3":
-            ordenador.por_stock(inventario.diccProductos)
-            menu_acciones()
+            productos_ordenados = ordenador.por_stock(list(inventario.diccProductos.values()))
+            for producto in productos_ordenados:
+                print(producto.mostrarProducto())
         elif opcion == "0":
             print("Volviendo al menu principal...")
             break
@@ -91,13 +74,14 @@ while True:
         case "1":
             inventario.agregarProducto()
         case "2":
-            inventario.mostrarProductos()
-            menu_ordenar()
+            inventario.mostrarInventario()
         case "3":
-            menu_buscador()
+            menu_ordenar()
         case "4":
-            inventario.modificarProducto()
+            menu_buscar()
         case "5":
+            inventario.modificarProducto()
+        case "6":
             inventario.eliminarProducto()
         case "0":
             print("Saliendo del programa...")
